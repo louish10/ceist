@@ -1,42 +1,74 @@
-.App {
+.app {
+  background-color: #454545;
+  color: white;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  margin: auto;
+}
+
+.title {
+  height: auto;
+  /* background-color: #932134; */
+  display: block;
   text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title-header {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title-subheader {
+
+}
+.question {
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.answer-container {
+  margin: 20px 0px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button {
+  font-size: 20px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  background-color: inherit;
+  border: 3px solid white;
+  color: white;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #656565
+}
+
+.button:active {
+  background-color: #707070
+}
+
+.button:disabled {
+  color: #707070;
+  border-color: #707070;
 }
 
 .button-correct{
-  color: green;
+  background-color: green;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+.button-correct:disabled {
+  background-color: green;
+}
+
+@media screen and (min-width: 700px) {
+  .content {
+    width: 700px
   }
 }

@@ -5,8 +5,6 @@ import './App.css';
 function App() {
   const [question, setQeustion] = useState({question: '', incorrect_answers: [], correct_answer: ""})
   const [answer, setAnswer] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
   const [score, setScore] = useState(0)
   const [questionsAnswered, setQuestionsAnswered] = useState(0)
   const [revealAnswer, setRevealAnswer] = useState(false)
@@ -21,12 +19,13 @@ function App() {
       .then(data => {
         setRevealAnswer(false)
         setQeustion(data.results[0])
-      }
-        )
+      })
+      .catch(err => console.log(err)
+    )
   }
 
   function Question() {
-    return <div dangerouslySetInnerHTML={ {__html: question.question} }></div>
+    return <div className="question" dangerouslySetInnerHTML={ {__html: question.question} }></div>
   }
 
   function submitAnswer(answer: string) {
@@ -35,11 +34,11 @@ function App() {
       setScore(score + 1)
     }
     setQuestionsAnswered(questionsAnswered + 1)
-    setTimeout(getQuestion, 1500)
+    setTimeout(getQuestion, 1000)
   }
 
-  const incorrectAnswers = question.incorrect_answers?.map(answer => <button onClick={() => submitAnswer(answer)}>{answer}</button>)
-  const correctAnswer = <button onClick={() => submitAnswer(question.correct_answer)} className={revealAnswer ? 'button-correct' : ''}>{question.correct_answer}</button>
+  const incorrectAnswers = question.incorrect_answers?.map(answer => <button className="button" onClick={() => submitAnswer(answer)} disabled={revealAnswer} dangerouslySetInnerHTML={{__html: answer}}></button>)
+  const correctAnswer = <button onClick={() => submitAnswer(question.correct_answer)} disabled={revealAnswer} className={revealAnswer ? 'button button-correct' : 'button'} dangerouslySetInnerHTML={ {__html: question.correct_answer} }></button>
   const allAnswers = incorrectAnswers.concat(correctAnswer)
 
   const isAnswerCorrect = <div>{(answer === question.correct_answer) ? 'True': 'False'}</div>
@@ -47,15 +46,18 @@ function App() {
 
 
   return (
-    <div>
-      <div>
-        <h1>Ceist</h1>
-        <h2>A trivia app</h2>
+    <div className="app">
+      <div className="content">
+        <div className="title">
+          <h1 className="title-header">Ceist</h1>
+          <h2 className="title-subheader">A trivia app</h2>
+        </div>
+        <Question></Question>
+        <div className="answer-container">
+          {allAnswers}
+        </div>
+        <div>{score} of {questionsAnswered}</div>
       </div>
-      <Question></Question>
-      {allAnswers}
-      {isAnswerCorrect}
-      <div>{score} of {questionsAnswered}</div>
     </div>
   );
 }
