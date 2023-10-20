@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ceist/static/css/main.94679c6a.css",
+    "main.js": "/ceist/static/js/main.bec373d0.js",
+    "static/js/787.d262200f.chunk.js": "/ceist/static/js/787.d262200f.chunk.js",
+    "index.html": "/ceist/index.html",
+    "main.94679c6a.css.map": "/ceist/static/css/main.94679c6a.css.map",
+    "main.bec373d0.js.map": "/ceist/static/js/main.bec373d0.js.map",
+    "787.d262200f.chunk.js.map": "/ceist/static/js/787.d262200f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94679c6a.css",
+    "static/js/main.bec373d0.js"
+  ]
+}
